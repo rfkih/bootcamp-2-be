@@ -6,12 +6,14 @@ const port = 2021;
 
 
 const userRouter = require("./src/routers/users")
+const productRouter = require ("./src/routers/products")
 
 app.use(cors("*"));
 app.use(express.json());
 app.use(express.static("public"));
 
 
+app.use("/products", productRouter)
 app.use("/users", userRouter);
 app.get("/", (req, res) => {
   res.status(200).send("API IS RUNNING");
